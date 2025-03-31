@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UbicacionDto {
-    @JsonProperty("id")
-    private int id;
-
     @JsonProperty("pais")
     private String pais;
 
