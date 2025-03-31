@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResponseDto {
     @JsonProperty("codigo")
-    private int codigo;
+    private String codigo;
 
-    @JsonProperty("status")
-    private String status;
+    @JsonProperty("detalle")
+    private String detalle;
 }
