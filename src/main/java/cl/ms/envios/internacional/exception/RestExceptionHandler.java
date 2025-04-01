@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,7 +20,8 @@ import java.util.List;
 @ControllerAdvice
 public class RestExceptionHandler {
     @ExceptionHandler({MethodArgumentTypeMismatchException.class, HttpMessageNotReadableException.class,
-            MethodArgumentNotValidException.class, NoResourceFoundException.class, HandlerMethodValidationException.class})
+            MethodArgumentNotValidException.class, NoResourceFoundException.class,
+            HandlerMethodValidationException.class, HttpMediaTypeNotSupportedException.class})
     protected ResponseEntity<ErrorDtoRp> handlerError(Exception e) {
         if (e instanceof MethodArgumentTypeMismatchException){
             return handleMethodArgumentTypeMismatchException();

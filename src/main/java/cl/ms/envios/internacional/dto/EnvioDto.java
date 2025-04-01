@@ -17,7 +17,7 @@ public class EnvioDto {
     private String folio;
 
     @JsonProperty("pesoArticulo")
-    private String pesoArticulo;
+    private double pesoArticulo;
 
     @JsonProperty("valorDeclarado")
     private double valorDeclarado;

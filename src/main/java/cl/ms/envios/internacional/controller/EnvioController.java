@@ -1,5 +1,6 @@
 package cl.ms.envios.internacional.controller;
 
+import cl.ms.envios.internacional.dto.ActualizaEstadoDtoRq;
 import cl.ms.envios.internacional.dto.EnvioDtoRp;
 import cl.ms.envios.internacional.dto.EnvioDtoRq;
 import cl.ms.envios.internacional.service.EnvioService;
@@ -30,7 +31,13 @@ public class EnvioController {
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> agregarEnvio(@Valid @RequestBody EnvioDtoRq rq){
-        return ResponseEntity.ok(rq);
+    public ResponseEntity<EnvioDtoRp> agregarEnvio(@Valid @RequestBody EnvioDtoRq rq){
+        return envioService.agregarEnvio(rq);
+    }
+
+    @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> actualizaEstadoEnvio(@Min(1) @PathVariable int id,
+                                                  @RequestBody ActualizaEstadoDtoRq rq){
+        return envioService.actualizaEstadoEnvio(id,rq);
     }
 }
