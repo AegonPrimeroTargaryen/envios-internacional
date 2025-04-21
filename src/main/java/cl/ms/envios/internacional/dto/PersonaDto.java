@@ -1,5 +1,6 @@
 package cl.ms.envios.internacional.dto;
 
+import cl.ms.envios.internacional.entity.PersonaEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -37,4 +38,13 @@ public class PersonaDto {
     @Email(message = "Correo incorrecto")
     @JsonProperty("correo")
     private String correo;
+
+    public PersonaEntity toPersonaEntityInsert() {
+        PersonaEntity personaEntity = new PersonaEntity();
+        personaEntity.setNombreCompleto(this.nombreCompleto);
+        personaEntity.setTelefono(this.telefono);
+        personaEntity.setCorreo(this.correo);
+        personaEntity.setDireccion(this.direccion.toDireccionEntityInsert());
+        return personaEntity;
+    }
 }

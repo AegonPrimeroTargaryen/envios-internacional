@@ -1,5 +1,6 @@
 package cl.ms.envios.internacional.dto;
 
+import cl.ms.envios.internacional.entity.DireccionEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -39,4 +40,13 @@ public class DireccionDto {
     @Size(max = 50, message = "Largo maximo de 50 caracteres")
     @JsonProperty("pais")
     private String pais;
+
+    public DireccionEntity toDireccionEntityInsert() {
+        DireccionEntity direccionEntity = new DireccionEntity();
+        direccionEntity.setDireccion(this.direccion);
+        direccionEntity.setComuna(this.comuna);
+        direccionEntity.setRegion(this.region);
+        direccionEntity.setPais(this.pais);
+        return direccionEntity;
+    }
 }

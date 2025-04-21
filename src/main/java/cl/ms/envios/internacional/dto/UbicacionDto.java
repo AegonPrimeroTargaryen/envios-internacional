@@ -1,5 +1,6 @@
 package cl.ms.envios.internacional.dto;
 
+import cl.ms.envios.internacional.entity.UbicacionEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -23,4 +24,11 @@ public class UbicacionDto {
     @Size(min = 3, max = 200, message = "Largo minimo de 3 y maximo de 200")
     @JsonProperty("detalle")
     private String detalle;
+
+    public UbicacionEntity toUbicacionEntityInsert() {
+        UbicacionEntity ubicacionEntity = new UbicacionEntity();
+        ubicacionEntity.setPais(pais);
+        ubicacionEntity.setDetalle(detalle);
+        return ubicacionEntity;
+    }
 }

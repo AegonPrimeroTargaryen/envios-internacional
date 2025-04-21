@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<oracle-clod.osdt.version>21.17.0.0</oracle-clod.osdt.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -52,10 +53,33 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>8.0.2.Final</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!--  DEPENDENCIAS PARA DB ORACLE CLOUD  -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc11</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>oraclepki</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_core</artifactId>
+			<version>${oracle-clod.osdt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_cert</artifactId>
+			<version>${oracle-clod.osdt.version}</version>
+		</dependency>
+		<!--	FIN	-->
 	</dependencies>
 
 	<build>
