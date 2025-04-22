@@ -49,4 +49,12 @@ public class DireccionDto {
         direccionEntity.setPais(this.pais);
         return direccionEntity;
     }
+
+    public DireccionEntity toDireccionEntityUpdate(DireccionEntity direccionEntity) {
+        direccionEntity.setDireccion(this.direccion);
+        direccionEntity.setComuna(this.comuna);
+        direccionEntity.setRegion(this.region);
+        direccionEntity.setPais(this.pais);
+        return direccionEntity;
+    }
 }

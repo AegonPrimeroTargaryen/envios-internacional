@@ -45,12 +45,18 @@ public class EnvioController {
                 .body(new EnvioDtoRp("00", "OK", envioService.agregarEnvio(rq)));
     }
 
-    @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+    @PutMapping(value = "/estado/{id}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<EnvioDtoRp> actualizaEstadoEnvio(@Min(1) @PathVariable int id,
                                                            @RequestBody ActualizaEstadoDtoRq rq) {
         log.info("Controller - actualizaEstadoEnvio()");
         return ResponseEntity
                 .ok(new EnvioDtoRp("00", "OK", envioService.actualizaEstadoEnvio(id, rq)));
+    }
+
+    @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<EnvioDtoRp> actualizarEnvio(@Min(1) @PathVariable int id, @RequestBody EnvioDtoRq rq) {
+        log.info("Controller - actualizarEnvio()");
+        return ResponseEntity.ok(new EnvioDtoRp("00", "OK", envioService.actualizarEnvio(id, rq)));
     }
 
     @DeleteMapping(value = "/{id}", consumes = "application/json", produces = "application/json")

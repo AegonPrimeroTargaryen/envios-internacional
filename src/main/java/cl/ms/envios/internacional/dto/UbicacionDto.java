@@ -31,4 +31,10 @@ public class UbicacionDto {
         ubicacionEntity.setDetalle(detalle);
         return ubicacionEntity;
     }
+
+    public UbicacionEntity toUbicacionEntityUpdate(UbicacionEntity ubicacionEntity) {
+        ubicacionEntity.setPais(this.pais);
+        ubicacionEntity.setDetalle(this.detalle);
+        return ubicacionEntity;
+    }
 }

@@ -12,4 +12,5 @@ public interface EnvioService {
     List<EnvioDto> agregarEnvio(EnvioDtoRq rq);
     List<EnvioDto> actualizaEstadoEnvio(int idEnvio, ActualizaEstadoDtoRq rq);
     void eliminarEnvio(int idEnvio);
+    List<EnvioDto> actualizarEnvio(int id, EnvioDtoRq rq);
 }

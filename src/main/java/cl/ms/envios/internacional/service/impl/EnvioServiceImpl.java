@@ -61,7 +61,7 @@ public class EnvioServiceImpl implements EnvioService {
         log.info("Service - actualizaEstadoEnvio() - init");
         List<EnvioDto> enviosDto = new ArrayList<>();
         Optional<EnvioEntity> result = envioRepository.findById((long) idEnvio);
-        if (result.isEmpty()) throw new EventoNotFoundException("Evento no encontrado","01","NOK");
+        if (result.isEmpty()) throw new EventoNotFoundException("Envio no encontrado","01","NOK");
         EnvioEntity actual = result.get();
         actual.setEstado(rq.getEstado());
         enviosDto.add(envioRepository.save(actual).toEnvioDto());
@@ -73,9 +73,22 @@ public class EnvioServiceImpl implements EnvioService {
     public void eliminarEnvio(int idEnvio){
         log.info("Service - eliminarEnvio() - init");
         Optional<EnvioEntity> result = envioRepository.findById((long) idEnvio);
-        if (result.isEmpty()) throw new EventoNotFoundException("Evento no encontrado","01","NOK");
+        if (result.isEmpty()) throw new EventoNotFoundException("Envio no encontrado","01","NOK");
         envioRepository.deleteById((long) idEnvio);
         log.info("Service - eliminarEnvio() - end");
+    }
+
+    @Override
+    public List<EnvioDto> actualizarEnvio(int id, EnvioDtoRq rq){
+        log.info("Service - actualizarEnvio() - init");
+        List<EnvioDto> enviosDto = new ArrayList<>();
+        Optional<EnvioEntity> result = envioRepository.findById((long) id);
+        if (result.isEmpty()) throw new EventoNotFoundException("Envio no encontrado","01","NOK");
+        EnvioEntity actual = result.get();
+        enviosDto.add(envioRepository.save(rq.toEnvioEntityUpdate(actual)).toEnvioDto());
+        logCantidadEnvios(enviosDto.size());
+        log.info("Service - actualizarEnvio() - end");
+        return enviosDto;
     }
 
     private void logCantidadEnvios(int size){

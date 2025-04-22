@@ -1,6 +1,9 @@
 package cl.ms.envios.internacional.dto;
 
+import cl.ms.envios.internacional.entity.DireccionEntity;
 import cl.ms.envios.internacional.entity.EnvioEntity;
+import cl.ms.envios.internacional.entity.PersonaEntity;
+import cl.ms.envios.internacional.entity.UbicacionEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -72,6 +75,25 @@ public class EnvioDto {
         envioEntity.setOrigen(this.origen.toDireccionEntityInsert());
         envioEntity.setRemitente(this.remitente.toPersonaEntityInsert());
         envioEntity.setDestinatario(this.destinatario.toPersonaEntityInsert());
+        return envioEntity;
+    }
+
+    public EnvioEntity toEnvioEntityUpdate(EnvioEntity envioEntity) {
+        PersonaEntity remitente = envioEntity.getRemitente();
+        PersonaEntity destinatario = envioEntity.getDestinatario();
+        UbicacionEntity ubicacion = envioEntity.getUbicacion();
+        DireccionEntity origen = envioEntity.getOrigen();
+        DireccionEntity destino = envioEntity.getDestino();
+
+        envioEntity.setFolio(this.folio);
+        envioEntity.setPesoArticulo(this.pesoArticulo);
+        envioEntity.setValorDeclarado(this.valorDeclarado);
+        envioEntity.setEstado(this.estado);
+        envioEntity.setUbicacion(this.ubicacion.toUbicacionEntityUpdate(ubicacion));
+        envioEntity.setDestino(this.destino.toDireccionEntityUpdate(destino));
+        envioEntity.setOrigen(this.origen.toDireccionEntityUpdate(origen));
+        envioEntity.setRemitente(this.remitente.toPersonaEntityUpdate(remitente));
+        envioEntity.setDestinatario(this.destinatario.toPersonaEntityUpdate(destinatario));
         return envioEntity;
     }
 }

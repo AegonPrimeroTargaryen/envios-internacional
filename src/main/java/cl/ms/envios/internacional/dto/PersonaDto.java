@@ -1,5 +1,6 @@
 package cl.ms.envios.internacional.dto;
 
+import cl.ms.envios.internacional.entity.DireccionEntity;
 import cl.ms.envios.internacional.entity.PersonaEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
@@ -45,6 +46,15 @@ public class PersonaDto {
         personaEntity.setTelefono(this.telefono);
         personaEntity.setCorreo(this.correo);
         personaEntity.setDireccion(this.direccion.toDireccionEntityInsert());
+        return personaEntity;
+    }
+
+    public PersonaEntity toPersonaEntityUpdate(PersonaEntity personaEntity) {
+        DireccionEntity direccionEntity = personaEntity.getDireccion();
+        personaEntity.setNombreCompleto(this.nombreCompleto);
+        personaEntity.setDireccion(this.direccion.toDireccionEntityUpdate(direccionEntity));
+        personaEntity.setTelefono(this.telefono);
+        personaEntity.setCorreo(this.correo);
         return personaEntity;
     }
 }
