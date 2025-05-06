@@ -19,13 +19,13 @@ COPY --from=builder /app/target/*.jar app.jar
 
 COPY wallet /app/wallet
 
-# Variables entorno
-ENV ORACLE_PATH_DATASOURCE="jdbc:oracle:thin:@dbaplicada_high?TNS_ADMIN=/app/wallet"
-ENV DB_MASCOTA_USER=MASCOTAS
-ENV DB_MASCOTA_PASS=MasMsSum.US3r_BD
-
-ENV MS_USER=admin
-ENV MS_PASS=admin123
+## Variables entorno
+#ENV ORACLE_PATH_DATASOURCE="jdbc:oracle:thin:@dbaplicada_high?TNS_ADMIN=/app/wallet"
+#ENV DB_MASCOTA_USER=MASCOTAS
+#ENV DB_MASCOTA_PASS=MasMsSum.US3r_BD
+#
+#ENV MS_USER=admin
+#ENV MS_PASS=admin123
 
 # Expone el puerto (si tu microservicio usa el 8081 por ejemplo)
 EXPOSE 8081

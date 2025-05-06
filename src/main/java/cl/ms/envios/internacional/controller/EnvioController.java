@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("${api.envio.internacional.base.url}")
+@RequestMapping("/envio-api/v1")
 public class EnvioController {
     private final EnvioService envioService;
 
