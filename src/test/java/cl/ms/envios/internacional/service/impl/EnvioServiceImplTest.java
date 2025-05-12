@@ -84,4 +84,11 @@ public class EnvioServiceImplTest {
 
         Assertions.assertEquals(envioEntity.getEstado(),actual.getFirst().getEstado());
     }
+
+    @Test
+    void getEnvioNotFound(){
+        Mockito.when(envioRepository.findById(1L)).thenReturn(Optional.empty());
+        Assertions.assertEquals(0, envioServiceImpl.buscarEnvioById(1).size()
+        );
+    }
 }
